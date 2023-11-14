@@ -15,8 +15,7 @@ const data = [
   },
 ];
 
-function list(req, res) {
-  res.header("Access-Control-Allow-Origin", "*");
+function list(_req, res) {
   res.status(200).json({ data });
 }
 
