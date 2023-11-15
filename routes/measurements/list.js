@@ -1,22 +1,15 @@
-const data = [
-  {
-    id: "1",
-    amount: "200",
-    date: "2023-11-26",
-    measuredby: "Emmanuel Barrientos",
-    userId: "1",
-  },
-  {
-    id: "2",
-    amount: "1000",
-    date: "2023-11-26",
-    measuredby: "Emmanuel Barrientos",
-    userId: "1",
-  },
-];
 
-function list(_req, res) {
-  res.status(200).json({ data });
+import Measurement from '../../db/measurementModel.js';
+import instance from '../../db/instance.js';
+
+async function list(_req, res) {
+instance.connect()
+const response = await Measurement.find();
+instance.disconnect()
+console.log(response);
+  res.status(200).json( response );
 }
+
+
 
 export default list;
