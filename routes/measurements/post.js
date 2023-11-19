@@ -3,8 +3,6 @@ import Measurement from "./measurementModel.js";
 
 export default async function post(req, res) {
   let InsertedData = req.body
-  
-
   let message = "Succesful post";
   let errors = {};
 

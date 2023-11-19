@@ -6,6 +6,8 @@ import cors from "cors";
 import fileUpload from "express-fileupload";
 import path from "path";
 import { fileURLToPath } from "url";
+import User from "./routes/users/userModel.js";
+
 import mongoose, { mongo } from "mongoose";
 var app = express();
 
@@ -29,7 +31,9 @@ const db = mongoose.connection;
 
 db.on("error", console.error.bind(console, "mongo db conection failed"));
 
-db.on("open", () => {
+db.on("open", async () => {
+  const users = await User.find();
+  console.log(users)
   app
     .use(fileUpload())
     .use(cors())
