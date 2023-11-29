@@ -1,16 +1,16 @@
 import mongoose from "mongoose";
+import bcrypt from "bcrypt";
 
 const userSchema = new mongoose.Schema({
-    name: String,
-    username: String,
-    email: String,
-    password:String
+  name: String,
+  username: String,
+  email: String,
+  password: String,
 });
 
-
-userSchema.methods.comparePassword = function(candidatePassword) {
-    return this.password === candidatePassword;
-  };
+userSchema.methods.public = function () {
+  return { email: this.email };
+};
 
 const User = mongoose.model("user", userSchema);
 

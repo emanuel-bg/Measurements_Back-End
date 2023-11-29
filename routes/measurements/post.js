@@ -14,5 +14,5 @@ export default async function post(req, res) {
     message = "Error creating de object";
     errors = e;
   }
-  res.status(200).json({ message, InsertedData, errors });
+  return res.status(200).json({ message, InsertedData, errors });
 }

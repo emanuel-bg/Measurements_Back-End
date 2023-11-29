@@ -32,8 +32,6 @@ const db = mongoose.connection;
 db.on("error", console.error.bind(console, "mongo db conection failed"));
 
 db.on("open", async () => {
-  const users = await User.find();
-  console.log(users)
   app
     .use(fileUpload())
     .use(cors())
