@@ -6,10 +6,17 @@ const userSchema = new mongoose.Schema({
   username: String,
   email: String,
   password: String,
+  image:String
 });
 
 userSchema.methods.public = function () {
-  return { email: this.email };
+  return {
+    email: this.email,
+    name: this.email,
+    username: this.username,
+    image:"",
+    token: "",
+  };
 };
 
 const User = mongoose.model("user", userSchema);

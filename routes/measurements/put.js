@@ -8,7 +8,7 @@ export default async function put(req, res) {
 
   errors.message = "";
  
-  const exist= await Measurement.countDocuments({ id: updatedId })
+  const exist= await Measurement.countDocuments({ _id: updatedId })
   if (!exist) {
     updatedData = req.body;
     message = "Object does not exist";

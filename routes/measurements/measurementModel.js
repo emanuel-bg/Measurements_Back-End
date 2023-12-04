@@ -1,11 +1,11 @@
 import mongoose from "mongoose";
 
 const measurementSchema = new mongoose.Schema({
-  id:String,
-  amount: String,
+  id: String,
+  amount: Number,
   date: String,
   measuredby: String,
-  userId: String,
+  userId: Number,
   imageName: String,
 });
 
