@@ -1,20 +1,25 @@
 import mongoose from "mongoose";
-import bcrypt from "bcrypt";
 
 const userSchema = new mongoose.Schema({
   name: String,
   username: String,
   email: String,
   password: String,
-  image:String
+  image: String,
+  timezone: String,
+  offset: String,
+  
 });
+
+
 
 userSchema.methods.public = function () {
   return {
+    id:this._id,
     email: this.email,
     name: this.email,
     username: this.username,
-    image:"",
+    image: "",
     token: "",
   };
 };

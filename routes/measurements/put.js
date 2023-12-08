@@ -7,17 +7,16 @@ export default async function put(req, res) {
   let errors = {};
 
   errors.message = "";
- 
-  const exist= await Measurement.countDocuments({ _id: updatedId })
+
+  const exist = await Measurement.countDocuments({ _id: updatedId });
+
   if (!exist) {
-    updatedData = req.body;
     message = "Object does not exist";
-    errors = {};
-    return res.status(400).json({ message, data:updatedData, errors });
+    return res.status(400).json({ message });
   }
   try {
     await Measurement.updateOne(
-      { id: updatedId },
+      { _id: updatedId },
       {
         $set: {
           amount: updatedData.amount,
@@ -33,5 +32,5 @@ export default async function put(req, res) {
     message = "Error updating de object";
     errors = e;
   }
-  res.status(200).json({ message, updatedData, errors });
+  res.status(200).json({ data:updatedData});
 }
