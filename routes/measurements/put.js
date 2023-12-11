@@ -3,10 +3,6 @@ import Measurement from "./measurementModel.js";
 export default async function put(req, res) {
   const updatedId = req.params.id;
   let updatedData = req.body;
-  let message = "Succesful Update";
-  let errors = {};
-
-  errors.message = "";
 
   const exist = await Measurement.countDocuments({ _id: updatedId });
 
@@ -14,6 +10,7 @@ export default async function put(req, res) {
     message = "Object does not exist";
     return res.status(400).json({ message });
   }
+  
   try {
     await Measurement.updateOne(
       { _id: updatedId },
