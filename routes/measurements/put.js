@@ -21,6 +21,7 @@ export default async function put(req, res) {
           measuredby: updatedData.measuredby,
           userId: updatedData.userId,
           imageName: updatedData.imageName,
+          updated_at:updatedData.updated_at
         },
       }
     );

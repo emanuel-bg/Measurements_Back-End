@@ -21,6 +21,9 @@ export default async function Login(req, res) {
       errors.password = ["Invalid user or password"];
       return res.status(422).json({ errors });
     }
+    //create token
+    //record session
+   
     res.status(200).json({ data: user.public() });
   } catch (error) {
     console.log(error);

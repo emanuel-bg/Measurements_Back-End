@@ -6,7 +6,6 @@ import cors from "cors";
 import fileUpload from "express-fileupload";
 import path from "path";
 import { fileURLToPath } from "url";
-import User from "./routes/users/userModel.js";
 
 import mongoose, { mongo } from "mongoose";
 var app = express();

@@ -16,8 +16,7 @@ export default function uploadImage(req, res) {
     // Guardar la imagen en el servidor
     image.mv(uploadPath, (err) => {
       if (err) {
-        return res.status(500).send(err);
-      }
+        return res.status(500).send(err);      }
 
       res.send("Imagen subida con éxito");
     });
