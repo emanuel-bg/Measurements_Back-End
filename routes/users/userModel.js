@@ -20,7 +20,7 @@ userSchema.methods.public = function () {
     name: this.email,
     username: this.username,
     image: "",
-    token: "",
+    token: this.token,
   };
 };
 
