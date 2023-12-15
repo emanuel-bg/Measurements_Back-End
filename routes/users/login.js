@@ -5,6 +5,7 @@ import getJWT from "../../utils/getJWT.js";
 
 export default async function Login(req, res) {
   try {
+
     const userData = req.body;
     const user = await User.findOne({ email: userData.email });
 

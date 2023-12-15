@@ -2,11 +2,10 @@ import "dotenv/config";
 import jwt from "jsonwebtoken";
 
 export default function (data) {
-  console.log(data)
   return jwt.sign(
     {
      data: data,
-     exp: Math.floor(Date.now() / 1000) + (60 * 60)
+      exp:  Math.floor(Date.now() / 1000) + 30//30 segundos //Math.floor(Date.now() / 1000) + (60 * 60) Una hora
     },
     process.env.SECRET_KEY,
   );

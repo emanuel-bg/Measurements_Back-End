@@ -50,6 +50,7 @@ db.on("open", async () => {
 
       // render the error page
       res.status(err.status || 500);
+      res.json({message:err.message})
       res.render("error");
     });
 });
