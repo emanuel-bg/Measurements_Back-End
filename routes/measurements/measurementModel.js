@@ -12,7 +12,7 @@ const measurementSchema = new mongoose.Schema({
 
 
 measurementSchema.virtual('id').get(function(){
-  return this._id.toHexString();
+  return this._id;
 });
 
 // Ensure virtual fields are serialised.
