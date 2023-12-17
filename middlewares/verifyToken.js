@@ -2,17 +2,20 @@ import jwt from "jsonwebtoken";
 import "dotenv/config";
 
 export default function verifyToken(req, res, next) {
-
-  const token = req.header("Authorization")?.split(" ")[1];
-
   try {
-    if (!token) throw { message: "Token not found", status: 401 };
+    const token = req.header("Authorization")?.split(" ")[1];
+    //Verify if the token exist
+    if (!token) {
+      throw { message: "Token not found", status: 401 };
+    }
 
     const decoded = jwt.decode(token, process.env.SECRET_KEY);
-    if (!decoded) throw { message: "Invalid token", status: 401 };
+    //Verify the decoded data in token
+    if (!decoded) {
+      throw { message: "Invalid token", status: 401 };
+    }
 
-    res.locals.token = token;
-
+    //Verify the token
     jwt.verify(token, process.env.SECRET_KEY, (err) => {
       if (err) {
         if (err.name === "TokenExpiredError") {
@@ -22,7 +25,7 @@ export default function verifyToken(req, res, next) {
         }
       }
     });
-
+    res.locals.token = token;
     next();
   } catch (error) {
     next(error);

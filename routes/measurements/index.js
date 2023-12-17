@@ -6,10 +6,11 @@ import put from "./put.js";
 import uploadImage from "./uploadImage.js";
 import get_one from "./get_one.js";
 import search from "./search.js";
+import currentUser from "../../middlewares/currentUser.js";
 
 var router = express.Router();
 
-router.get("/", list);
+router.get("/",currentUser,list);
 
 router.get("/:id", get_one);
 
