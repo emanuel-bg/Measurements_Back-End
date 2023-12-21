@@ -11,6 +11,8 @@ export default async function post(req, res) {
     return res.status(400).json({ errors });
   }
   try {
+    measurementData.userId = res.locals.currentUser.id.toString();
+    measurementData.measuredby = res.locals.currentUser.username;
     const newMeasurements = await Measurement.create(measurementData);
     return res.status(201).json({
       data: measurementData,

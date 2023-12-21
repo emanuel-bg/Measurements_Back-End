@@ -8,19 +8,16 @@ const userSchema = new mongoose.Schema({
   image: String,
   timezone: String,
   offset: String,
-  
 });
-
-
 
 userSchema.methods.public = function () {
   return {
-    id:this._id,
+    id: this._id,
     email: this.email,
     name: this.email,
     username: this.username,
     image: "",
-    token: "",
+    token: this.token,
   };
 };
 

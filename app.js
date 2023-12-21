@@ -1,14 +1,15 @@
 import express from "express";
 import indexRouter from "./routes/index.js";
-import mesurementsRouter from "./routes/measurements/index.js";
+import measurementsRouter from "./routes/measurements/index.js";
 import usersRouter from "./routes/users/index.js";
 import cors from "cors";
 import fileUpload from "express-fileupload";
 import path from "path";
 import { fileURLToPath } from "url";
-import User from "./routes/users/userModel.js";
-
+import "dotenv/config";
 import mongoose, { mongo } from "mongoose";
+import verifyToken from "./middlewares/verifyToken.js";
+import currentUser from "./middlewares/currentUser.js";
 var app = express();
 
 // view engine setup
@@ -22,10 +23,10 @@ const usersimages = path.join(
   "routes/users/images"
 );
 
-const uri =
-  "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.0.1";
-
-mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.DATABASE_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 const db = mongoose.connection;
 
@@ -37,7 +38,7 @@ db.on("open", async () => {
     .use(cors())
     .use(express.json())
     .use("/", indexRouter)
-    .use("/measurements", mesurementsRouter)
+    .use("/measurements", verifyToken, currentUser, measurementsRouter)
     .use("/users", usersRouter)
     .use("/measurements/images", express.static(measurementsimages))
     .use("/users/images", express.static(usersimages))
@@ -52,7 +53,8 @@ db.on("open", async () => {
 
       // render the error page
       res.status(err.status || 500);
+      res.json({ message: err.message });
       res.render("error");
     });
-});
+})
 export default app;

@@ -5,8 +5,12 @@ export default async function remove(req, res) {
   try {
     const result = await Measurement.deleteOne({ _id: deletedId });
     console.log(result);
-    return res.status(200).json({deletedId });
+    if (!res.locals.measurement) {
+      return res.status(200).json({ data: { deletedId } });
+    }
+    return res.status(200).json({ data: { deletedId } });
   } catch (e) {
     console.log(e);
+    res.status(500);
   }
 }
