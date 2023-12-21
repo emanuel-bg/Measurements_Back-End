@@ -2,6 +2,7 @@ import User from "./userModel.js";
 
 async function list(_req, res) {
   try {
+    //filtrar por userId
     const data = await User.find();
     const count = await User.countDocuments();
     res.status(200).json({ count, data });
