@@ -5,7 +5,6 @@ import getJWT from "../../utils/getJWT.js";
 
 export default async function Login(req, res) {
   try {
-
     const userData = req.body;
     const user = await User.findOne({ email: userData.email });
 
@@ -15,6 +14,7 @@ export default async function Login(req, res) {
       errors.password = ["Invalid user or password"];
       return res.status(422).json({ errors });
     }
+
     //validar email
     const validPassord = await bcrypt.compare(userData.password, user.password);
 
@@ -24,6 +24,7 @@ export default async function Login(req, res) {
       errors.password = ["Invalid user or password"];
       return res.status(422).json({ errors });
     }
+
     user.token = getJWT(user.public());
     await Session.create({
       userId: user.id,
@@ -32,10 +33,14 @@ export default async function Login(req, res) {
       token: user.token,
     });
 
-    
-    res.status(200).json({ data: user.public() });
+
+    res
+      .status(200)
+      .json({ data: user.public() });
   } catch (error) {
-    console.log(error);
-    return res.status(500).json({ message: "Server side error" });
+    console.log(error); // TODO add some description to the error
+    return res
+      .status(500)
+      .json({ message: "Server side error" });
   }
 }

@@ -26,17 +26,17 @@ Usage
 When is installed  [npm][npm]:
 
 ```sh
-npm i 
+npm i
 ```
 
 ```sh
-npm start 
+npm start
 ```
 
 License
 -------
 
-Measurements_Back-End is licensed under the [MIT](#) license.  
+Measurements_Back-End is licensed under the [MIT](#) license.
 Copyright &copy; 2023, Emmanuel Barrientos
 
 
@@ -46,3 +46,13 @@ Copyright &copy; 2023, Emmanuel Barrientos
 [shield-node]: https://img.shields.io/badge/node.js%20support-0.10–5-brightgreen.svg
 [shield-npm]: https://img.shields.io/badge/npm-v3.2.0-blue.svg
 [shield-build]: https://img.shields.io/badge/build-passing-brightgreen.svg
+
+# TODO
+
+- [ ] Add unit tests
+- [ ] ADD .editorconfig
+- [ ] Use English for comments and variables
+- [ ] Use morgan or any other log instead of `console.log`
+- [ ] Use let or const https://medium.com/@codingsam/awesome-javascript-no-more-var-working-title-999428999994
+- [ ] Configure eslint to manage linting errors
+- [ ] Add postman collection file so others can see how to use the API
