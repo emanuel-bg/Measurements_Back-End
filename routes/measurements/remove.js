@@ -1,12 +1,15 @@
-import Measurement from "./measurementModel.js";
-
+import Measurement from "./measurement.js";
+import mongoose from "mongoose";
 export default async function remove(req, res) {
-  // TODO validate we have a proper id before use it
-  const deletedId = req.params.id;
+  const deletedId = req.params.id?.toString().trim();
 
+
+  if (!deletedId || !mongoose.Types.ObjectId.isValid(deletedId)) {
+     next({ message: 'Id not valid', status: 404 });
+  }
+ valid
   try {
     const result = await Measurement.deleteOne({ _id: deletedId });
-    console.log(result); // TODO add description or remove console.log
 
     if (!res.locals.measurement) {
       return res
@@ -17,8 +20,8 @@ export default async function remove(req, res) {
     return res
       .status(200)
       .json({ data: { deletedId } });
-  } catch (e) {
-    console.log(e); // TODO add description to the error and use `error` instead of `e`
-    res.status(500); // TODO send proper json response
+  } catch (error) {
+    console.log(error, "Error while trying to delete the measurement");
+    res.status(500).json({message:"Server Side Error"}); 
   }
 }

@@ -8,9 +8,9 @@ import getOne from "./get_one.js";
 import search from "./search.js";
 import currentUser from "../../middlewares/currentUser.js";
 import modelById from "../../middlewares/modelById.js";
-import Measurement from "./measurementModel.js";
+import Measurement from "./measurement.js";
 
-var router = express.Router(); // TODO use let or const
+const router = express.Router();
 
 router.get("/", currentUser, list);
 router.get("/:id", modelById(Measurement, "measurement"), getOne);

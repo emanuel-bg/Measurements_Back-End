@@ -1,4 +1,4 @@
-import Measurement from "./measurementModel.js";
+import Measurement from "./measurement.js";
 
 async function measureById(req, res, next) {
   const measureId = req.params?.id?.trim();
@@ -7,13 +7,15 @@ async function measureById(req, res, next) {
     return next({ message: "Measurement not found", status: 404 });
   }
 
-  // TODO use try catch to catch errors
-  const data = await Measurement.findById(measureId);
-
-  // TODO English comments
-  //sea por current user
-  res.locals.measure = data;
-  next();
+  try {
+    const data = await Measurement.findById(measureId);
+    res.locals.measure = data;
+    next();
+  } catch (error) {
+   
+    next(error); 
+   
+  }
 }
 
 export default measureById;

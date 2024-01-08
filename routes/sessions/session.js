@@ -1,4 +1,4 @@
-// TODO consider moving it to it's own sessions folder
+
 // add unit tests to ensure we will have the correct functionality
 import mongoose from "mongoose";
 

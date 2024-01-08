@@ -49,10 +49,10 @@ Copyright &copy; 2023, Emmanuel Barrientos
 
 # TODO
 
-- [ ] Add unit tests
-- [ ] ADD .editorconfig
-- [ ] Use English for comments and variables
-- [ ] Use morgan or any other log instead of `console.log`
-- [ ] Use let or const https://medium.com/@codingsam/awesome-javascript-no-more-var-working-title-999428999994
-- [ ] Configure eslint to manage linting errors
-- [ ] Add postman collection file so others can see how to use the API
+- [ ] Add unit tests Pending 
+- [ ] ADD .editorconfig Pending
+- [ ] Use English for comments and variables DONE
+- [ ] Use morgan or any other log instead of `console.log` PENDING
+- [ ] Use let or const https://medium.com/@codingsam/awesome-javascript-no-more-var-working-title-999428999994 DONE
+- [ ] Configure eslint to manage linting errors PENDING
+- [ ] Add postman collection file so others can see how to use the API PENDING

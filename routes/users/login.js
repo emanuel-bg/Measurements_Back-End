@@ -1,5 +1,5 @@
-import User from "./userModel.js";
-import Session from "./sessionModel.js";
+import User from "./user.js";
+import Session from "../sessions/session.js";
 import bcrypt from "bcrypt";
 import getJWT from "../../utils/getJWT.js";
 
@@ -15,7 +15,6 @@ export default async function Login(req, res) {
       return res.status(422).json({ errors });
     }
 
-    //validar email
     const validPassord = await bcrypt.compare(userData.password, user.password);
 
     if (!user || !validPassord) {
@@ -38,7 +37,7 @@ export default async function Login(req, res) {
       .status(200)
       .json({ data: user.public() });
   } catch (error) {
-    console.log(error); // TODO add some description to the error
+    console.log(error,"Error while trying to log in: ");
     return res
       .status(500)
       .json({ message: "Server side error" });

@@ -1,4 +1,5 @@
-import Measurement from "./measurementModel.js";
+import Measurement from "./measurement.js";
+import validateMeasurement from "../../utils/validateMeasurement.js";
 
 export default async function put(req, res) {
   const updatedId = req.params?.id;
@@ -7,34 +8,25 @@ export default async function put(req, res) {
   updatedData.username = res.locals.currentUser.username;
 
   if (!res.locals.measurement) {
+    return res.status(404).json({ error: "The measurement doesn't exist" });
+  }
+
+  const errors = validateMeasurement(updatedData);
+
+  if (Object.keys(errors).length > 0) {
     return res
-      .status(400) // TODO change status to 404
-      .json({ error: "The measurement does'nt exist" });
+      .status(400)
+      .json({ errors });
   }
 
   try {
     await Measurement.updateOne(
       { _id: updatedId },
-      {
-        $set: { // TODO update this so we can use:
-          // $set: updatedData instead of manually setting each property
-          amount: updatedData.amount,
-          date: updatedData.date,
-          measuredby: updatedData.measuredby,
-          userId: updatedData.userId,
-          imageName: updatedData.imageName,
-          updated_at: updatedData.updated_at,
-          username: updatedData.username,
-        },
-      }
+      { $set: updatedData } 
     );
-  } catch (e) { // TODO use `error` instead of `e`
-    updatedData = req.body;
-    message = "Error updating de object";
-    errors = e; // TODO send proper error response
+  } catch (error) {
+    return res.status(400).json({ message: "Error updating the measurement" });
   }
 
-  res
-    .status(200)
-    .json({ data: updatedData });
+  res.status(200).json({ data: updatedData });
 }

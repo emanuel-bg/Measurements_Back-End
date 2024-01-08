@@ -7,8 +7,7 @@ import currentUser from "../../middlewares/currentUser.js";
 import Logout from "./logout.js";
 import me from "./me.js";
 
-var router = express.Router(); // TODO use let or const depending on the usage
-
+const router = express.Router(); 
 router.post("/login", Login);
 router.post("/logout", verifytoken, currentUser, Logout);
 router.post("/", post);

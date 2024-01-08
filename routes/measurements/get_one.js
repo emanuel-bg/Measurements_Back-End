@@ -1,5 +1,3 @@
-// TODO remove unused import
-import Measurement from "./measurementModel.js";
 
 async function getOne(_req, res) {
   const data = res.locals.measurement;

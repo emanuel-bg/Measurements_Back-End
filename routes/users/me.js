@@ -1,7 +1,7 @@
-import User from "./userModel.js";
-import Session from "./sessionModel.js";
+import User from "./user.js";
+import Session from "../sessions/session.js";
 
-export default async function me(req, res) { // TODO remove unused variable
+export default async function me(_req, res) {
   try {
     const userToken = res.locals.token;
     const session = await Session.findOne({ token: userToken });
@@ -18,8 +18,7 @@ export default async function me(req, res) { // TODO remove unused variable
 
     res.status(200).json({ data: user.public() });
   } catch (error) {
-    console.log(error); // TODO add something to describe the error
-    // console.log('Error on ...', error);
+    console.log("Error trying to log out: ", error); 
 
     return res.status(500).json({ message: "Server side error" });
   }

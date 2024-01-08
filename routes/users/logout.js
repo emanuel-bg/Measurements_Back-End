@@ -1,4 +1,4 @@
-import Session from "./sessionModel.js";
+import Session from "../sessions/session.js";
 
 export default async function Logout(_req, res) {
     try {
@@ -14,7 +14,7 @@ export default async function Logout(_req, res) {
             .json({ message: "Logged out successfully" });
     } catch (error) {
         return res
-            .status(200) // TODO this should not be 200 status code.
+            .status(400) 
             .json({ message: "An error occurred while logging out" });
     }
 }

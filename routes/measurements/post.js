@@ -1,13 +1,8 @@
-// TODO remove unused imports
-import Measurement from "./measurementModel.js";
-import {
-  validateMeasureDate,
-  validateMeasureMeasuredby,
-} from "../../utils/Validations.js";
-
+import Measurement from "./measurement.js";
+import validateMeasurement from "../../utils/validateMeasurement.js"
 export default async function post(req, res) {
   let measurementData = req.body;
-  const errors = validate(measurementData);
+  const errors = validateMeasurement(measurementData);
 
   if (Object.keys(errors).length > 0) {
     return res
@@ -18,24 +13,15 @@ export default async function post(req, res) {
   try {
     measurementData.userId = res.locals.currentUser.id.toString();
     measurementData.measuredby = res.locals.currentUser.username;
-    // TODO unused variable
-    const newMeasurements = await Measurement.create(measurementData);
+
+    await Measurement.create(measurementData);
 
     return res
       .status(201)
       .json({ data: measurementData });
-  } catch (e) { // TODO respond with proper error
-    console.log(e);
+  } catch (error) {
+    return res
+    .status(400)
+    .json({ message:"Error trying to create the measurement: "+error });
   }
-}
-
-// TODO move validate to its own file and add unit tests
-function validate(measureData) {
-  let errors = {};
-
-  if (isNaN(measureData.amount)) {
-    errors.amount = ["Invalid measure amount"];
-  }
-
-  return errors;
 }

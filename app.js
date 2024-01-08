@@ -1,4 +1,4 @@
-// TODO remove unused variables and imports
+
 import express from "express";
 import indexRouter from "./routes/index.js";
 import measurementsRouter from "./routes/measurements/index.js";
@@ -11,8 +11,8 @@ import "dotenv/config";
 import mongoose, { mongo } from "mongoose";
 import verifyToken from "./middlewares/verifyToken.js";
 import currentUser from "./middlewares/currentUser.js";
-
-var app = express(); // TODO use let or const
+import connectDatabase from "./db.js";
+const  app = express();
 
 const measurementsimages = path.join(
   path.dirname(fileURLToPath(import.meta.url)),
@@ -24,12 +24,7 @@ const usersimages = path.join(
   "routes/users/images"
 );
 
-// TODO move db realated config and functions to its own file
-mongoose.connect(process.env.DATABASE_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-
+connectDatabase()
 const db = mongoose.connection;
 
 db.on("error", console.error.bind(console, "mongo db conection failed"));
@@ -49,14 +44,11 @@ db.on("open", async () => {
       next(createError(404));
     })
     .use(function (err, req, res, next) {
-      // set locals, only providing error in development
       res.locals.message = err.message;
       res.locals.error = req.app.get("env") === "development" ? err : {};
 
-      // render the error page
       res.status(err.status || 500);
       res.json({ message: err.message });
-      res.render("error"); // TODO this is an API render will try to render html page
     });
 })
 export default app;
