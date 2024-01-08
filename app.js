@@ -1,3 +1,4 @@
+// TODO remove unused variables and imports
 import express from "express";
 import indexRouter from "./routes/index.js";
 import measurementsRouter from "./routes/measurements/index.js";
@@ -10,19 +11,20 @@ import "dotenv/config";
 import mongoose, { mongo } from "mongoose";
 import verifyToken from "./middlewares/verifyToken.js";
 import currentUser from "./middlewares/currentUser.js";
-var app = express();
 
-// view engine setup
+var app = express(); // TODO use let or const
 
 const measurementsimages = path.join(
   path.dirname(fileURLToPath(import.meta.url)),
   "routes/measurements/images"
 );
+
 const usersimages = path.join(
   path.dirname(fileURLToPath(import.meta.url)),
   "routes/users/images"
 );
 
+// TODO move db realated config and functions to its own file
 mongoose.connect(process.env.DATABASE_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -54,7 +56,7 @@ db.on("open", async () => {
       // render the error page
       res.status(err.status || 500);
       res.json({ message: err.message });
-      res.render("error");
+      res.render("error"); // TODO this is an API render will try to render html page
     });
 })
 export default app;

@@ -10,14 +10,13 @@ import currentUser from "../../middlewares/currentUser.js";
 import modelById from "../../middlewares/modelById.js";
 import Measurement from "./measurementModel.js";
 
-
-var router = express.Router();
+var router = express.Router(); // TODO use let or const
 
 router.get("/", currentUser, list);
-router.get("/:id", modelById(Measurement,"measurement"),getOne);
+router.get("/:id", modelById(Measurement, "measurement"), getOne);
 router.post("/", post);
-router.put("/:id",modelById(Measurement,"measurement"), put);
-router.delete("/:id",modelById(Measurement,"measurement"), remove);
+router.put("/:id", modelById(Measurement, "measurement"), put);
+router.delete("/:id", modelById(Measurement, "measurement"), remove);
 router.post("/uploadImage", uploadImage);
 router.post("/search", search);
 

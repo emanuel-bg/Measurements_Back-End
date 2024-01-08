@@ -1,3 +1,4 @@
+// TODO see feadback from FE repository
 /* eslint-disable no-useless-escape */
 export function validateEmail(email) {
   if (email.trim() == "") {

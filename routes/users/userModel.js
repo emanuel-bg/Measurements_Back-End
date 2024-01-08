@@ -1,3 +1,5 @@
+// TODO add unit tests for model.
+// consider renaming to 'user' since it is more like a convention.
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({

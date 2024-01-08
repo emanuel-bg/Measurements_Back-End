@@ -1,3 +1,5 @@
+// TODO consider renaming it to measurement.js so it is more la conventional naming
+// TODO add unit tests to ensure fields remain after any changes
 import mongoose from "mongoose";
 
 const measurementSchema = new mongoose.Schema({
@@ -7,11 +9,11 @@ const measurementSchema = new mongoose.Schema({
   userId: String,
   imageName: String,
   created_at: Number,
-  updated_at:Number
+  updated_at: Number
 });
 
 
-measurementSchema.virtual('id').get(function(){
+measurementSchema.virtual('id').get(function () {
   return this._id;
 });
 
