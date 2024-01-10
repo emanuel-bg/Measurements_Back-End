@@ -1,38 +1,40 @@
-import bcrypt from "bcrypt";
 import validateUserData from "../../utils/validateUserData.js";
-
 import User from "./user.js";
 
+const SALT_ROUNDS = 8;
+
 export default async function post(req, res) {
-  let userData = req.body;
+  const userData = req.body;
   const userExist = await User.findOne({ email: userData.email });
+
   if (userExist) {
-    return res.status(409).json({ message: "User already exist" });
+    return res
+      .status(409)
+      .json({ message: "User already exists" });
   }
 
-  const errors = validateUserData(userData)
+  const errors = validateUserData(userData);
 
   if (Object.keys(errors).length > 0) {
-    return res.status(400).json({ errors });
+    return res
+      .status(400)
+      .json({ errors });
   }
 
-  // TODO move this to its own file/function
-  bcrypt.hash(userData.password, 8, async (err, hash) => {
-    if (err) {
-      throw Error;
-    }
-    const hashedPassword = hash;
+  try {
+    const hashedPassword = await encriptPassword(userData.password);
     userData.password = hashedPassword;
-    try {
-      const newUser = await User.create(userData);
-      return res
-        .status(201)
-        .json({ message: "User succesfully created", id: newUser._id });
-    } catch (error) {
-      console.log(error);
-      res.status(400).json({message:"Error creating the user"})
-    }
-  });
+
+    const newUser = await User.create(userData);
+    return res
+      .status(201)
+      .json({ message: "User successfully created", id: newUser._id });
+  } catch (error) {
+    console.log(error);
+    return res
+      .status(400)
+      .json({ message: "Error creating the user" });
+  }
 }
 
 

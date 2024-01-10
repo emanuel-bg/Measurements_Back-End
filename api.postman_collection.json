@@ -1,0 +1,378 @@
+{
+	"info": {
+		"_postman_id": "2c2c5034-dd67-45c1-84d7-c95375405cf7",
+		"name": "api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21307387"
+	},
+	"item": [
+		{
+			"name": "USERS",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Emanuel Barrientos\",\n    \"username\": \"Emanuel\",\n    \"email\": \"ema21@gmail.com\",\n    \"password\": \"Emanuel21!\",\n    \"image\": \"\",\n    \"timezone\": \"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/users/login",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MEASUREMENT",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\n{\n        \"amount\": \"100\",\n        \"date\": 0,\n        \"imageName\": \"\",\n        \"created_at\": 1702318805,\n        \"updated_at\": 1703022928,\n        \"userId\":5\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/measurements/5",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"measurements",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "USERS",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiNjU3NjdlYWZhMWUxNmVmZjc1NmM0NGUyIiwiZW1haWwiOiJlbWFAZ21haWwuY29tIiwibmFtZSI6ImVtYUBnbWFpbC5jb20iLCJ1c2VybmFtZSI6IkVtYW51ZWwiLCJpbWFnZSI6IiJ9LCJleHAiOjE3MDQ4Mzc4MjMsImlhdCI6MTcwNDgzNDIyM30.dYhu-CA9xWb8ZRD7FyOgh-bxaZrYh17g_eM6YgtHNp8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Emanuel Barrientos\",\n    \"username\": \"Emanuel\",\n    \"email\": \"ema21@gmail.com\",\n    \"password\": \"Emanuel21!\",\n    \"image\": \"\",\n    \"timezone\": \"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/users/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MEASUREMENTS",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiNjU3NjdlYWZhMWUxNmVmZjc1NmM0NGUyIiwiZW1haWwiOiJlbWFAZ21haWwuY29tIiwibmFtZSI6ImVtYUBnbWFpbC5jb20iLCJ1c2VybmFtZSI6IkVtYW51ZWwiLCJpbWFnZSI6IiJ9LCJleHAiOjE3MDQ4Mzc4MjMsImlhdCI6MTcwNDgzNDIyM30.dYhu-CA9xWb8ZRD7FyOgh-bxaZrYh17g_eM6YgtHNp8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Emanuel Barrientos\",\n    \"username\": \"Emanuel\",\n    \"email\": \"ema21@gmail.com\",\n    \"password\": \"Emanuel21!\",\n    \"image\": \"\",\n    \"timezone\": \"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/measurements/65767eafa1e16eff756c44e2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"measurements",
+						"65767eafa1e16eff756c44e2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MEASUREMENT",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiNjU3NjdlYWZhMWUxNmVmZjc1NmM0NGUyIiwiZW1haWwiOiJlbWFAZ21haWwuY29tIiwibmFtZSI6ImVtYUBnbWFpbC5jb20iLCJ1c2VybmFtZSI6IkVtYW51ZWwiLCJpbWFnZSI6IiJ9LCJleHAiOjE3MDQ3NTM1MTYsImlhdCI6MTcwNDc0OTkxNn0.yemsFg2b53u4yymCtVLS9yxtqnUKSEimado4ZD2-z1o",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"email\": \"ema@gmail.com\" ,\n  \"password\": \"Ema123!\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/measurements",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"measurements"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MEASUREMENT",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoxLCJuYW1lIjoiRW1hbnVlbCBCYXJyaWVudG9zIiwidXNlcm5hbWUiOiJFbWFudWVsIiwiZW1haWwiOiJlbWFAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMDgkYkZVYmF2cnFiNmlyWXFTU2p0cm4uTzlwNTFxa09Zd0tyRjNJUmN4VVR2emdScGZjVTNUc1cifSwiZXhwIjoxNzAzMDI1ODQ0LCJpYXQiOjE3MDMwMjIyNDR9.iAPws7bKXX3ej1Hm_8HtQJMg4FjLOYJ9zk_jW2TYZJ8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\n{\n        \"amount\": \"100\",\n        \"date\": 0,\n        \"imageName\": \"\",\n        \"created_at\": 1702318805,\n        \"updated_at\": 1703022928,\n        \"userId\":5\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/measurements/65775862607db78efdd956a0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"measurements",
+						"65775862607db78efdd956a0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LOGIN",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"pm.environment.set(\"token\",jsonData.data.token);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiNjU5NDdiNWYxODRmMmJlNWVhZTY0NTg0IiwiZW1haWwiOiJlbWFAZ21haWwuY29tIiwibmFtZSI6ImVtYUBnbWFpbC5jb20iLCJ1c2VybmFtZSI6IkVtYW51ZWwiLCJpbWFnZSI6IiJ9LCJleHAiOjE3MDQyMzM0MTksImlhdCI6MTcwNDIyOTgxOX0.6YS8cvuMne7rREXmRt-xIJ7XpwGYWSWr1175XiKO-Dk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"email\": \"ema@gmail.com\" ,\n  \"password\": \"Ema123!\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/users/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ME",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiNjU5NDdiNWYxODRmMmJlNWVhZTY0NTg0IiwiZW1haWwiOiJlbWFAZ21haWwuY29tIiwibmFtZSI6ImVtYUBnbWFpbC5jb20iLCJ1c2VybmFtZSI6IkVtYW51ZWwiLCJpbWFnZSI6IiJ9LCJleHAiOjE3MDQyMzM0MTksImlhdCI6MTcwNDIyOTgxOX0.6YS8cvuMne7rREXmRt-xIJ7XpwGYWSWr1175XiKO-Dk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"email\": \"ema@gmail.com\" ,\n  \"password\": \"Ema123!\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/users/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LOGOUT",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiNjU5NDdiNWYxODRmMmJlNWVhZTY0NTg0IiwiZW1haWwiOiJlbWFAZ21haWwuY29tIiwibmFtZSI6ImVtYUBnbWFpbC5jb20iLCJ1c2VybmFtZSI6IkVtYW51ZWwiLCJpbWFnZSI6IiJ9LCJleHAiOjE3MDQyMzM0MTksImlhdCI6MTcwNDIyOTgxOX0.6YS8cvuMne7rREXmRt-xIJ7XpwGYWSWr1175XiKO-Dk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"email\": \"ema@gmail.com\" ,\n  \"password\": \"Ema123!\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/users/logout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

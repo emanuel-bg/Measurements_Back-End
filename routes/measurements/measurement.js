@@ -1,6 +1,7 @@
 // TODO add unit tests to ensure fields remain after any changes
 import mongoose from "mongoose";
 
+// Validate with mongoose
 const measurementSchema = new mongoose.Schema({
   amount: Number,
   date: Number,

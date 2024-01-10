@@ -1,31 +1,18 @@
-import validatePassword from "../validatePassword";
+import validatePassword from "../validatePassword.js";
+import tester from "../tester.js";
 
-describe("validatePassword function", () => {
-    test("should return true for a valid password", () => {
-        const validPasswords = [
-            "Passw0rd!",
-            "Secure123$",
-            "Test@1234",
-            "AbcdEfgh1$",
-        ];
+const table = [
+    // test name, test input and test expected output
+    { name: "Alphanumeric with Special Characters", input: 'Passw0rd!', output: true },
+    { name: "Alphanumeric with Special Characters", input: 'Secure123$', output: true },
+    { name: "Alphanumeric with Special Characters", input: 'Test@1234', output: true },
+    { name: "Alphanumeric with Special Characters", input: 'AbcdEfgh1$', output: true },
+    { name: "Alphabetic Characters", input: 'abcd', output: false },
+    { name: "Exceeds Maximum Length", input: 'verylongpasswordthatexceedsthemaximumlimit', output: false },
+    { name: "Missing Uppercase", input: 'nouppercase1!', output: false },
+    { name: "Missing Lowercase", input: 'NOLOWERCASE1!', output: false },
+    { name: "No Alphanumeric Characters", input: '1234123', output: false },
+    { name: "Only Alphabetic and Uppercase", input: 'Onlylettersanduppercase', output: false },
+];
 
-        validPasswords.forEach((password) => {
-            expect(validatePassword(password)).toBe(true);
-        });
-    });
-
-    test("should return false for an invalid password", () => {
-        const invalidPasswords = [
-            "abcd", // Less than min length (5 characters)
-            "verylongpasswordthatexceedsthemaximumlimit", // More than max length (20 characters)
-            "nouppercase1!", // Missing uppercase letter
-            "NOLOWERCASE1!", // Missing lowercase letter
-            "1234123", // Missing both uppercase and lowercase letters
-            "Onlylettersanduppercase", // No digits or special characters
-        ];
-
-        invalidPasswords.forEach((password) => {
-            expect(validatePassword(password)).toBe(false);
-        });
-    });
-});
+tester(table,validatePassword)

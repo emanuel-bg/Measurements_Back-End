@@ -1,30 +1,16 @@
-import validateLetters from "../validateLetters";
+import validateLetters from "../validateLetters.js";
+import tester from "../tester.js";
+const table = [
+    { name: "Alphabetic Characters", input: 'abc', output: true },
+    { name: "Uppercase Letters", input: 'ABC', output: true },
+    { name: "Mixed Case Alphabets", input: 'AbCdEfG', output: true },
+    { name: "Alphabetic Characters with Spaces", input: 'a b c', output: true },
+    { name: "Words Containing Letters", input: 'LettersWithSpaces', output: true },
+    { name: "Non-Alphabetic Characters", input: '123', output: false },
+    { name: "Special Characters", input: '!@#$', output: false },
+    { name: "Alphanumeric Characters", input: 'abc123', output: false },
+    { name: "Mixed Characters", input: 'A@C', output: false },
+];
 
-describe("validateLetters function", () => {
-    test("should return true for a string containing only letters", () => {
-        const validStrings = [
-            "abc",
-            "ABC",
-            "AbCdEfG",
-            "a b c", // spaces are ignored
-            "LettersWithSpaces",
-        ];
 
-        validStrings.forEach((str) => {
-            expect(validateLetters(str)).toBe(true);
-        });
-    });
-
-    test("should return false for a string containing non-letter characters", () => {
-        const invalidStrings = [
-            "123", // numbers
-            "!@#$", // special characters
-            "abc123", // numbers and letters
-            "A@C", // special character
-        ];
-
-        invalidStrings.forEach((str) => {
-            expect(validateLetters(str)).toBe(false);
-        });
-    });
-});
+tester(table,validateLetters)

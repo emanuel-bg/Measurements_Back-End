@@ -1,32 +1,20 @@
-import NoSpacesAndNull from "../noSpacesAndNull";
+import NoSpacesAndNull from "../noSpacesAndNull.js";
+import tester from "../tester.js";
 
-describe("NoSpacesAndNull function", () => {
-    test("should return true for a string without spaces or being null", () => {
-        const validStrings = [
-            "Hello",
-            "123",
-            "NoSpacesHere",
-            "1234WithoutSpaces",
-        ];
 
-        validStrings.forEach((str) => {
-            expect(NoSpacesAndNull(str)).toBe(true);
-        });
-    });
+const table = [
+    { name: "Word", input: 'Hello', output: true },
+    { name: "numbers", input: '123', output: true },
+    { name: "NoSpacesHere", input: 'NoSpacesHere', output: true },
+    { name: "withoutSpaces", input: '1234WithoutSpaces', output: true },
+    { name: "Empty", input: '', output: false },
+    { name: "Space", input: ' ', output: false },
+    { name: "MultipleSpaces", input: '   ', output: false },
+    { name: "Has Spaces", input: 'Has Spaces', output: false },
+    { name: "Another String With Spaces", input: 'Another String With Spaces', output: false },
+    { name: "Null", input: null, output: false },
+];
 
-    test("should return false for a string containing spaces or being null", () => {
-        const invalidStrings = [
-            "",
-            " ", // Single space
-            "   ", // Multiple spaces
-            "Has Spaces", // String with spaces
-            "Another String With Spaces",
-            null,
-        ];
 
-        invalidStrings.forEach((str) => {
-            console.log(str);
-            expect(NoSpacesAndNull(str)).toBe(false);
-        });
-    });
-});
+
+tester(table,NoSpacesAndNull)
