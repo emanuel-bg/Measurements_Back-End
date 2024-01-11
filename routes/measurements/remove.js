@@ -7,7 +7,6 @@ export default async function remove(req, res) {
   if (!deletedId || !mongoose.Types.ObjectId.isValid(deletedId)) {
      next({ message: 'Id not valid', status: 404 });
   }
- valid
   try {
     const result = await Measurement.deleteOne({ _id: deletedId });
 

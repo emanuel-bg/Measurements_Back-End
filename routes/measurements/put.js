@@ -6,7 +6,7 @@ export default async function put(req, res) {
   let updatedData = req.body;
   updatedData.userId = res.locals.currentUser.id.toString();
   updatedData.username = res.locals.currentUser.username;
-
+updatedData.updated_at=Date.now()/1000
   if (!res.locals.measurement) {
     return res.status(404).json({ error: "The measurement doesn't exist" });
   }

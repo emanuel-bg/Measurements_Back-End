@@ -13,7 +13,8 @@ export default async function post(req, res) {
   try {
     measurementData.userId = res.locals.currentUser.id.toString();
     measurementData.measuredby = res.locals.currentUser.username;
-
+   measurementData.created_at=Date.now()/1000
+   measurementData.updated_at=Date.now()/1000
     await Measurement.create(measurementData);
 
     return res
